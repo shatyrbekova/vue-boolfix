@@ -1,8 +1,13 @@
 <template>
   <div id="app">
+      <link rel="stylesheet" 
+        href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" 
+        integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" 
+        crossorigin="anonymous">
     <div class="container-fluid">
-       <Header :menuList="menuList" />
-        <font-awesome-icon icon="user-secret" />
+      <!-- searchedMovie è una funzione per cercare -->
+       <Header :menuList="menuList"  @search="searchedMovie"/> /
+    
         <div>
           
         <Main :results="results"/>
@@ -13,6 +18,7 @@
 </template>
 
 <script>
+import axios from "axios"
 import Header from "./components/Header.vue";
 import Main from "./components/Main.vue";
 
@@ -33,6 +39,7 @@ export default {
          {id: 4, name:"Aggiunti di recente", link: "#"},
          {id: 5, name:"La mia lista", link: "#"},
       ],
+      movies:[],
       results:[
         {
             "adult": false,
@@ -99,9 +106,20 @@ export default {
     ]
 
     }
+  
       
   
+  },
+  created(){
+
+    axios
+       .get("https://api.themoviedb.org/3/search/movie?api_key=b2ebac52b1c20d4bb5658dd8e16916f7&query=ritorno+al+futuro")
+       .then((response)=>{
+         this.movies = response.data.results;
+
+       })
   }
+
 }
 </script>
 
