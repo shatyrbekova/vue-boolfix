@@ -1,10 +1,10 @@
 
 <template>
-  <div>
+  <div class="box-movie">
     <div>
         <img src="https://image.tmdb.org/t/p/w342/hQq8xZe5uLjFzSBt4LanNP7SQjl.jpg" alt="">
     </div>
-     <div>
+     <div class="hover-informations">
        <div class="title"> {{title  }}  </div>
        <div class="original-title"> {{originalTitle }} </div>
        <div class="original_language"> {{originalLanguage}} </div>
@@ -28,5 +28,20 @@ export default {
 
 
 <style lang="scss" scoped>
-
+      .box-movie{
+        position: relative;
+      }
+    .hover-informations{
+      // display: none;
+      font-size:20px;
+      font-weight: bold;
+      position: absolute;
+      bottom:0;
+      left:30%;
+      transform: translate(-50%, -50%);
+    }
+    //  .hover-informations:hover {
+    //   cursor: pointer;
+    //   display: block;
+    // }
 </style>
