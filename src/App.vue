@@ -1,7 +1,14 @@
 <template>
   <div id="app">
-    <Header />
-    <Main :results="results"/>
+    <div class="container-fluid">
+       <Header :menuList="menuList" />
+        <font-awesome-icon icon="user-secret" />
+        <div>
+          
+        <Main :results="results"/>
+        </div>
+    </div>
+    
   </div>
 </template>
 
@@ -18,6 +25,14 @@ export default {
   },
   data: function(){
     return{
+      menuList:[
+         {id: 0, name:"Home", link: "#"},
+         {id: 1, name:"SerieTV", link: "#"},
+         {id: 2, name:"Film", link: "#"},
+         {id: 3, name:"Originali", link: "#"},
+         {id: 4, name:"Aggiunti di recente", link: "#"},
+         {id: 5, name:"La mia lista", link: "#"},
+      ],
       results:[
         {
             "adult": false,
@@ -91,5 +106,5 @@ export default {
 </script>
 
 <style lang="scss">
-
+  @import "./style/app.scss";
 </style>
