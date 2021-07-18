@@ -2,19 +2,15 @@ import 'bootstrap'; //libreria bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css'; //css bootstrap
 import Vue from 'vue'
 import App from './App.vue'
-// import { library } from '@fortawesome/fontawesome-svg-core'
-// // import { faJs, faVuejs } from '@fortawesome/free-brands-svg-icons'
-// import { faCoffee } from '@fortawesome/free-solid-svg-icons'
-// import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
+
+import CountryFlag from 'vue-country-flag'
+Vue.component('country-flag', CountryFlag)
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-// library.add(faUserSecret, faCoffee)
-// library.add(faJs, faVuejs);
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
-
-
+import LangFlag from 'vue-lang-code-flags';
+Vue.component('lang-flag', LangFlag);
 
 Vue.config.productionTip = false
 
