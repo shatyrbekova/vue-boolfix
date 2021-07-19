@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-      <link rel="stylesheet" 
+      <!-- <link rel="stylesheet" 
         href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" 
         integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" 
-        crossorigin="anonymous">
+        crossorigin="anonymous"> -->
     <div class="container-fluid">
       <!-- searchedMovie è una funzione per cercare -->
        <Header :menuList="menuList" @search="searchFilm" />
@@ -44,7 +44,7 @@ export default {
          {id: 5, name:"La mia lista", link: "#"},
       ],
       filteredMovies:[],
-      movies:[ ]
+      movies:[],
 
     }
   
@@ -60,7 +60,11 @@ export default {
          //i dati filtrati verranno salvati in un nuovo array "filteredMovies"
          this.filteredMovies = response.data.results;
 
-       })
+       });
+        axios.get("https://api.themoviedb.org/3/search/multi?api_key=b2ebac52b1c20d4bb5658dd8e16916f7")
+        .then((response)=>{
+         this.movies = response.data.results;
+    })
   },
   methods:{
 

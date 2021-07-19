@@ -12,6 +12,8 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 import LangFlag from 'vue-lang-code-flags';
 Vue.component('lang-flag', LangFlag);
 
+import '@fortawesome/fontawesome-free/css/all.css'
+
 Vue.config.productionTip = false
 
 new Vue({
