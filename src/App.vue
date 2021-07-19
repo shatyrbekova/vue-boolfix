@@ -8,10 +8,10 @@
       <!-- searchedMovie è una funzione per cercare -->
        <Header :menuList="menuList" @search="searchFilm" />
     
-        <div>
-           <country-flag country='it' size='big'/>
+        <div class="container">
+           <!-- <country-flag country='it' size='big'/>
             <lang-flag iso="en" />
-           <country-flag country='it' size='big'/>
+           <country-flag country='it' size='big'/> -->
         <Main :movies="filteredMovies"/>
         </div>
     </div>
@@ -53,7 +53,7 @@ export default {
   },
   created(){
     
-    axios.get("https://api.themoviedb.org/3/search/movie?api_key=b2ebac52b1c20d4bb5658dd8e16916f7&query=ritorno+al+futuro")
+    axios.get("https://api.themoviedb.org/3/movie/popular?api_key=b2ebac52b1c20d4bb5658dd8e16916f7")
        .then((response)=>{
          // i dati di API verranno salvati in array di "movies"
          this.movies = response.data.results;
