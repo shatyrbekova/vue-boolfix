@@ -1,13 +1,13 @@
 <template>
-  <div class="box-movie">
+  <div class="box-movie" :style=" ' background-image:url(https://image.tmdb.org/t/p/w500'  + this.poster  +  ')'">
     <div>
 
-         <img :src=" 'https://image.tmdb.org/t/p/w500/' + this.poster " width="350px"  :alt="this.title">
+         <!-- <img :src=" 'https://image.tmdb.org/t/p/w500/' + this.poster " width="350px"  :alt="this.title"> -->
      
     </div>
   
       <div class="box-informations">
-        <div class="title">Titolo:{{ title }}</div>
+        <div class="title">{{ title }}</div>
         <div class="original-title"> Titolo originale: {{ originalTitle }}</div>
         <!-- <div class="original_language">{{ originalLanguage }}</div> -->
          <div>
@@ -15,7 +15,7 @@
         </div>
         <div class="vote_average"> 
        
-
+         <!-- per visualizzare le stars uso v-for con voteMathRound -->
           <i v-for="i in 5" :key="i" class="fa-star" :class="i <= voteMathRound ? 'fas': 'far' "> </i>
         </div>
       </div>
@@ -29,7 +29,9 @@ export default {
   data(){
      
      return{
-       voteMathRound: Math.round(this.voteAverage / 2)
+       //nell'Api vote_average parte da 1 a 10, devo trasformare nelle stelle che devono essere da 1 a 5;
+        //in questo caso 
+       voteMathRound: Math.round(this.voteAverage / 2),
      }
   },
   props: {
@@ -47,22 +49,27 @@ export default {
 .box-movie {
   position: relative;
   cursor: pointer;
+  background-size: cover;
+  height: 600px;
+
 
     &:hover .box-informations{
              display:block;
-             opacity: 1;
+             opacity: .5;
+             background: rgb(68, 67, 67);
        }
      .box-informations{
-            opacity: 1;
+   
            font-size: 20px;
-         
+           width:100%;
+           height:100%;
            position: absolute;
-           left: 40%;
+           left: 0;
            bottom:0;
-           transform: translate(-50%, -50%);
+           text-align: center;
            color:white;
            display:none;
-           padding-left:24px;
+          
 
           .title{
             font-size: 22px;
