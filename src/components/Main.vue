@@ -2,11 +2,11 @@
   <main class="row">
     <h2>ORIGINALI NETFLIX</h2>
 
-    <div v-if="films.length === 0 && series.length === 0" >
+    <div v-if="films.length === 0 && series.length === 0" class="row" >
 
       <h2>Popular</h2>
       <Movie
-        class="col-lg-12 "
+        class="col-lg-3 "
         v-for="element in movies"
         :key="element.id"
         :title="element.title"
@@ -26,9 +26,9 @@
       />  -->
     <div v-else>
       <h2>Movies</h2>
-
-      <Movie
-        class="col-lg-12 "
+       <div class="row">
+          <Movie
+        class="col-lg-3 "
         v-for="element in films"
         :key="element.id"
         :title="element.title"
@@ -37,11 +37,13 @@
         :voteAverage="element.vote_average"
         :poster="element.poster_path"
       />
+       </div>
+      
 
       <h2>Series</h2>
-      <div>
+      <div class="row"> 
         <Movie
-          class="col-lg-12"
+          class="col-lg-3"
           v-for="element in series"
           :key="element.id"
           :title="element.title"
@@ -72,10 +74,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.col-lg-12 {
-  width: calc(100% / 5);
-  float: left;
-}
+
 main {
   color: white;
 }

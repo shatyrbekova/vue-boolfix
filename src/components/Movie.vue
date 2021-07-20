@@ -55,15 +55,17 @@ export default {
   position: relative;
   cursor: pointer;
   background-size: cover;
-  height: 600px;
+  height: 520px;
+  margin-bottom: 15px;
 
   &:hover .box-informations {
     display: block;
-    opacity: 0.5;
-    background: rgb(68, 67, 67);
+    // opacity: 0.7;
+    background: rgba(0, 0, 0, 0.7);
   }
   .hover{
       margin-top: 270px;
+      color:white;
      
   }
   .box-informations {
