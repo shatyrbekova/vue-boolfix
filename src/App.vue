@@ -11,7 +11,7 @@
 
       <div>
         <!-- ho usato al posto di movies,  filteredMovies  per filtrare -->
-        <Main :movies="movies" />
+        <Main :movies="movies" :films="films" :series="series" />
       </div>
     </div>
   </div>

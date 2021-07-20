@@ -2,7 +2,7 @@
   <main class="row">
     <h2>ORIGINALI NETFLIX</h2>
 
-    <div v-if="films.length === 0 && series.length === 0">
+    <div v-if="films.length === 0 && series.length === 0" >
 
       <h2>Popular</h2>
       <Movie
