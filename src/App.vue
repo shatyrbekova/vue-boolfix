@@ -2,7 +2,12 @@
   <div id="app">
     <div class="container-fluid">
       <!-- searchedMovie è una funzione per cercare -->
-      <Header :menuList="menuList" @search="searchFilm" />
+      <Header
+        :menuList="menuList"
+        @search="[findMovie($event), findSerie($event)]"
+         
+      />
+       <!-- @search="searchFilm" -->
 
       <div>
         <!-- ho usato al posto di movies,  filteredMovies  per filtrare -->
@@ -53,7 +58,6 @@ export default {
           // i dati di API verranno salvati in array di "movies"
           this.movies = response.data.results;
         });
-    
     },
 
     searchFilm(searchMovie) {
@@ -68,11 +72,31 @@ export default {
         .then((response) => {
           this.movies = response.data.results;
         });
+      console.log(searchMovie);
     },
 
-    findFilm(){
-      axios.get(``)
-    }
+    findSerie(searchMovie) {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/search/tv?api_key=b2ebac52b1c20d4bb5658dd8e16916f7&query=${searchMovie}`
+        )
+        .then((response) => {
+          this.series = response.data.results;
+          console.log(response.data.results)
+        });
+    },
+
+    findMovie(searchMovie) {
+      console.log('hey')
+      axios
+        .get(
+          `https://api.themoviedb.org/3/search/movie?api_key=b2ebac52b1c20d4bb5658dd8e16916f7&query=${searchMovie}`
+        )
+        .then((response) => {
+          this.films = response.data.results;
+          console.log(response.data.results)
+        });
+    },
   },
 };
 </script>

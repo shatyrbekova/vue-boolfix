@@ -19,6 +19,7 @@
           <li>
             <i class="fas fa-search"></i>
             <input type="text" placeholder="Search" v-model="searchMovie" @keyup.enter="$emit('search', searchMovie)">
+            <!-- searchMovie è $event -->
             <button @click="$emit('search', searchMovie)">Cerca</button>
           </li>
           <li>BAMBINI</li>
