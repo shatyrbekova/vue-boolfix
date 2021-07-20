@@ -13,7 +13,11 @@
          <div>
             Langua:  <lang-flag :iso="originalLanguage" />
         </div>
-        <div class="vote_average"> Voto: {{ voteAverage }}</div>
+        <div class="vote_average"> 
+       
+
+          <i v-for="i in 5" :key="i" class="fa-star" :class="i <= voteMathRound ? 'fas': 'far' "> </i>
+        </div>
       </div>
     </div>
 
@@ -22,13 +26,19 @@
 <script>
 export default {
   name: "Movie",
+  data(){
+     
+     return{
+       voteMathRound: Math.round(this.voteAverage / 2)
+     }
+  },
   props: {
     title: String,
     originalTitle: String,
     originalLanguage: String,
     voteAverage: Number,
     poster: String,
-    iso: String,
+    // iso: String,
   },
 };
 </script>

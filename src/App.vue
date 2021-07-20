@@ -6,9 +6,6 @@
       <Header :menuList="menuList" @search="searchFilm" />
 
       <div >
-        <!-- <country-flag country='it' size='big'/>
-            <lang-flag iso="en" />
-           <country-flag country='it' size='big'/> -->
            <!-- ho usato al posto di movies,  filteredMovies  per filtrare -->
         <Main :movies="movies" />
       </div>
@@ -84,7 +81,7 @@ export default {
 
           searchFilm(searchMovie){
             if(searchMovie.length === 0){
-              return this.popularApi();
+              return this.popularMovieApi();
             }
 
              axios.get(`https://api.themoviedb.org/3/search/multi?api_key=b2ebac52b1c20d4bb5658dd8e16916f7&query=${searchMovie}`)
