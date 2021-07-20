@@ -1,21 +1,18 @@
 <template>
   <div id="app">
-      <!-- <link rel="stylesheet" 
-        href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" 
-        integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" 
-        crossorigin="anonymous"> -->
+   
     <div class="container-fluid">
       <!-- searchedMovie è una funzione per cercare -->
-       <Header :menuList="menuList" @search="searchFilm" />
-    
-        <div class="container">
-           <!-- <country-flag country='it' size='big'/>
+      <Header :menuList="menuList" @search="searchFilm" />
+
+      <div >
+        <!-- <country-flag country='it' size='big'/>
             <lang-flag iso="en" />
            <country-flag country='it' size='big'/> -->
-        <Main :movies="filteredMovies"/>
-        </div>
+           <!-- ho usato al posto di movies,  filteredMovies  per filtrare -->
+        <Main :movies="movies" />
+      </div>
     </div>
-    
   </div>
 </template>
 
@@ -47,44 +44,69 @@ export default {
       movies:[],
 
     }
-  
-      
-  
+
+
+
   },
   created(){
-    
-    axios.get("https://api.themoviedb.org/3/movie/popular?api_key=b2ebac52b1c20d4bb5658dd8e16916f7")
+
+       //api per filtrare
+
+    // axios.get("https://api.themoviedb.org/3/movie/popular?api_key=b2ebac52b1c20d4bb5658dd8e16916f7")
+    //    .then((response)=>{
+    //      // i dati di API verranno salvati in array di "movies"
+    //      this.movies = response.data.results;
+    //      //i dati filtrati verranno salvati in un nuovo array "filteredMovies"
+    //      this.filteredMovies = response.data.results;
+
+      //  });
+
+      this.popularMovieApi();
+
+    //     axios.get("https://api.themoviedb.org/3/search/tv?api_key=b2ebac52b1c20d4bb5658dd8e16916f7")
+    //     .then((response)=>{
+    //      this.movies = response.data.results;
+    // })
+  },
+   methods:{
+
+
+     popularMovieApi(){
+
+        axios.get("https://api.themoviedb.org/3/movie/popular?api_key=b2ebac52b1c20d4bb5658dd8e16916f7")
        .then((response)=>{
          // i dati di API verranno salvati in array di "movies"
-         this.movies = response.data.results;
+         this.movies = response.data.results;});
          //i dati filtrati verranno salvati in un nuovo array "filteredMovies"
-         this.filteredMovies = response.data.results;
+        //  this.filteredMovies = response.data.results; 
 
-       });
-        axios.get("https://api.themoviedb.org/3/search/multi?api_key=b2ebac52b1c20d4bb5658dd8e16916f7")
-        .then((response)=>{
-         this.movies = response.data.results;
-    })
-  },
-  methods:{
+          },
 
-    //*Funzione per cercare un film, inserendo il titolo;
-      searchFilm(searchMovie){
-        this.filteredMovies =this.movies.filter((film)=>{
-       //? quando inserisco Back non mi esce nienete.
-       //*TODO è da migliorare il codice.
-              return film.title.toLowerCase().includes(searchMovie.trim()) ||
-                     film.title.toUpperCase().includes(searchMovie.trim())
+          searchFilm(searchMovie){
+            if(searchMovie.length === 0){
+              return this.popularApi();
+            }
 
-        })
-       console.log( searchMovie)
-      }
+             axios.get(`https://api.themoviedb.org/3/search/multi?api_key=b2ebac52b1c20d4bb5658dd8e16916f7&query=${searchMovie}`)
+             .then((response)=>{  this.movies= response.data.results })
 
-  }
+                // //*Funzione per cercare un film, inserendo il titolo;
+                //   searchFilm(searchMovie){
+                //     this.filteredMovies =this.movies.filter((film)=>{
+                //    //? quando inserisco Back non mi esce nienete.
+                //    //*TODO è da migliorare il codice.
+                //           return film.title.toLowerCase().includes(searchMovie.trim()) ||
+                //                  film.title.toUpperCase().includes(searchMovie.trim())
 
+                //     })
+                //    console.log( searchMovie)
+                //   }
+
+  }  }
 }
 </script>
 
 <style lang="scss">
-  @import "./style/app.scss";
+@import "./style/app.scss";
+@import url('https://fonts.googleapis.com/css2?family=Martel+Sans:wght@300;400;600;700&display=swap');
 </style>

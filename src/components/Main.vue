@@ -7,7 +7,7 @@
       :originalTitle="element.original_title"
       :originalLanguage="element.original_language"
       :voteAverage="element.vote_average"
-      :posterPath="element.poster_path"
+      :poster="element.poster_path"
       /> 
            
 
@@ -31,7 +31,7 @@ export default {
 
 <style lang="scss" scoped>
 .col-lg-12{
-    width: calc(100% / 3);
+    width: calc(100% / 5);
     float:left;
 }
 main {

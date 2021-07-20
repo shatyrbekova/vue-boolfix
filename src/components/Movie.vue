@@ -1,20 +1,19 @@
 <template>
   <div class="box-movie">
     <div>
-      <img
-        src="https://image.tmdb.org/t/p/w342/hQq8xZe5uLjFzSBt4LanNP7SQjl.jpg" 
-        alt=""
-      />
+
+         <img :src=" 'https://image.tmdb.org/t/p/w500/' + this.poster " width="350px"  :alt="this.title">
+     
     </div>
   
       <div class="box-informations">
-        <div class="title">{{ title }}</div>
-        <div class="original-title">{{ originalTitle }}</div>
+        <div class="title">Titolo:{{ title }}</div>
+        <div class="original-title"> Titolo originale: {{ originalTitle }}</div>
         <!-- <div class="original_language">{{ originalLanguage }}</div> -->
          <div>
-            Language:  <lang-flag :iso="originalLanguage" />
+            Langua:  <lang-flag :iso="originalLanguage" />
         </div>
-        <div class="vote_average">{{ voteAverage }}</div>
+        <div class="vote_average"> Voto: {{ voteAverage }}</div>
       </div>
     </div>
 
@@ -28,7 +27,7 @@ export default {
     originalTitle: String,
     originalLanguage: String,
     voteAverage: Number,
-    posterPath: String,
+    poster: String,
     iso: String,
   },
 };
@@ -38,20 +37,26 @@ export default {
 .box-movie {
   position: relative;
   cursor: pointer;
+
     &:hover .box-informations{
              display:block;
              opacity: 1;
        }
-       .box-informations{
+     .box-informations{
+            opacity: 1;
            font-size: 20px;
-           font-weight: bold;
+         
            position: absolute;
-           left: 30%;
+           left: 40%;
            bottom:0;
            transform: translate(-50%, -50%);
            color:white;
            display:none;
-           padding:14px;
+           padding-left:24px;
+
+          .title{
+            font-size: 22px;
+          }
        }
 }
  
