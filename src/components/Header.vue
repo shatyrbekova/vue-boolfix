@@ -19,7 +19,7 @@
           <li class="searchbar-hidden">
             <!-- Search bar hidden -->
             
-              <i class="fas fa-search" @click="showDisplay" ></i>
+              <!-- <i class="fas fa-search" @click="showDisplay" ></i> -->
           
            <form :style="{ visibility: computedVisibility}"  >
                <input
@@ -31,7 +31,7 @@
             <!-- searchMovie è $event -->
             <button @click="$emit('search', searchMovie)">Cerca</button>
            </form>
-            
+             <i class="fas fa-search" @click="showDisplay" ></i>
           </li>
           <li>BAMBINI</li>
           <li>
@@ -117,7 +117,7 @@ header {
     }
    
     input[type="text"] {
-      width: 170px;
+     
       transition: width 0.35s ease-in-out;
     }
 

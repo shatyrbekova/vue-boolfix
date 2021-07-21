@@ -62,7 +62,7 @@ export default {
         // i dati di API verranno salvati in array di "movies"
         this.movies = response.data.results;
       });
-      console.log("Popular Movies");
+      console.log("Popular Movies")
     },
 
     findSerie(searchMovie) {
@@ -92,5 +92,6 @@ export default {
 
 <style lang="scss">
 @import "./style/app.scss";
+
 @import url("https://fonts.googleapis.com/css2?family=Martel+Sans:wght@300;400;600;700&display=swap");
 </style>
