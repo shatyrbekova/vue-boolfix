@@ -19,19 +19,25 @@
           <li class="searchbar-hidden">
             <!-- Search bar hidden -->
 
-            <!-- <i class="fas fa-search" @click="showDisplay" ></i> -->
-
-            <form :style="{ visibility: computedVisibility }">
+            
+            
+          
+            <div :style="{ visibility: computedVisibility}">
               <input
                 type="text"
                 placeholder="Search"
                 v-model="searchMovie"
                 @keyup.enter="$emit('search', searchMovie)"
               />
+            </div>
               <!-- searchMovie è $event -->
-              <button @click="$emit('search', searchMovie)">Cerca</button>
-            </form>
+
+            <div :style="{ visibility: computedVisibility}">
+              <button type="button" @click="$emit('search', searchMovie)">Cerca</button>
+            </div>
+          
             <i class="fas fa-search" @click="showDisplay"></i>
+            <!-- @click="showDisplay" -->
           </li>
           <li>BAMBINI</li>
           <li>
