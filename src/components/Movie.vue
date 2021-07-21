@@ -12,7 +12,6 @@
         <div class="title">{{ title }}</div>
         <div class="line" />
         <div class="original-title">Titolo originale: {{ originalTitle }}</div>
-        <!-- <div class="original_language">{{ originalLanguage }}</div> -->
         <div>Langua: <lang-flag :iso="originalLanguage" /></div>
         <div class="vote_average">
           <!-- per visualizzare le stars uso v-for con voteMathRound -->
@@ -20,7 +19,7 @@
             v-for="i in 5"
             :key="i"
             class="fa-star"
-            :class="i <= voteMathRound ? 'fas' : 'far'"
+            :class="i <= voteMathRound ? 'fas' : 'far '"
           >
           </i>
         </div>
@@ -45,7 +44,6 @@ export default {
     originalLanguage: String,
     voteAverage: Number,
     poster: String,
-    // iso: String,
   },
 };
 </script>
@@ -60,13 +58,11 @@ export default {
 
   &:hover .box-informations {
     display: block;
-    // opacity: 0.7;
     background: rgba(0, 0, 0, 0.7);
   }
-  .hover{
-      margin-top: 270px;
-      color:white;
-     
+  .hover {
+    margin-top: 170px;
+    color: white;
   }
   .box-informations {
     font-size: 20px;
@@ -84,10 +80,17 @@ export default {
       font-weight: bold;
       line-height: 100%;
     }
-
-    .line{
-      width:30%;
-      height:2px;
+    .far {
+      -webkit-text-stroke-width: 1px;
+    }
+    .fas {
+      //  color: yellow;
+      -webkit-text-stroke-width: 1px;
+      -webkit-text-stroke-color: orange;
+    }
+    .line {
+      width: 30%;
+      height: 2px;
       margin: 15px auto;
       background: #fff;
     }
