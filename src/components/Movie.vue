@@ -1,27 +1,32 @@
 <template>
-  <div
-    class="box-movie"
-    :style="
-      ' background-image:url(https://image.tmdb.org/t/p/w500' +
-        this.poster +
-        ')'
-    "
-  >
-    <div class="box-informations">
-      <div class="hover">
-        <div class="title">{{ title }}</div>
-        <div class="line" />
-        <div class="original-title">Titolo originale: {{ originalTitle }}</div>
-        <div>Langua: <lang-flag :iso="originalLanguage" /></div>
-        <div class="vote_average">
-          <!-- per visualizzare le stars uso v-for con voteMathRound -->
-          <i
-            v-for="i in 5"
-            :key="i"
-            class="fa-star"
-            :class="i <= voteMathRound ? 'fas' : 'far '"
-          >
-          </i>
+  <div>
+    <div
+      class="box-movie"
+      :style="
+        ' background-image:url(' +
+          this.image +
+          ')'
+        
+      "
+      ml-1
+    >
+      <div class="box-informations">
+        <div class="hover">
+          <div class="title">{{ title }}</div>
+          <div class="line" />
+          <div class="original-title">Titolo originale: {{ originalTitle }}</div>
+          <div>Langua: <lang-flag :iso="originalLanguage" /></div>
+         
+          <div class="vote_average">
+            <!-- per visualizzare le stars uso v-for con voteMathRound -->
+            <i
+              v-for="i in 5"
+              :key="i"
+              class="fa-star"
+              :class="i <= voteMathRound ? 'fas' : 'far '"
+            >
+            </i>
+          </div>
         </div>
       </div>
     </div>
@@ -44,26 +49,46 @@ export default {
     originalLanguage: String,
     voteAverage: Number,
     poster: String,
+   
   },
+  computed: {
+    image() {
+      if(this.poster) {
+        return 'https://image.tmdb.org/t/p/w500' + this.poster
+      } else {
+        return require('../assets/not-found-image.jpeg');
+      }
+    }
+  },
+  
 };
 </script>
 
 <style lang="scss" scoped>
+
 .box-movie {
   position: relative;
   cursor: pointer;
   background-size: cover;
   height: 470px;
   margin-bottom: 15px;
+  font-family: 'Bebas Neue', cursive;
 
+ 
   &:hover .box-informations {
     display: block;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.8);
+   transition-duration: 4s;
+  }
+  &:focus .box-informations{
+    
   }
   .hover {
     margin-top: 170px;
     color: white;
+
   }
+  
   .box-informations {
     font-size: 20px;
     width: 100%;
@@ -80,11 +105,14 @@ export default {
       font-weight: bold;
       line-height: 100%;
     }
+    .original-title{
+      line-height: 100%;
+      padding:0 12px;
+    }
     .far {
       -webkit-text-stroke-width: 1px;
     }
     .fas {
-      //  color: yellow;
       -webkit-text-stroke-width: 1px;
       -webkit-text-stroke-color: orange;
     }
@@ -94,6 +122,11 @@ export default {
       margin: 15px auto;
       background: #fff;
     }
+
+  
   }
 }
+//Google Font per i titoli;
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 </style>

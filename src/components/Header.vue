@@ -16,11 +16,22 @@
 
       <div>
         <ul class="searchBar">
-          <li>
-            <i class="fas fa-search"></i>
-            <input type="text" placeholder="Search" v-model="searchMovie" @keyup.enter="$emit('search', searchMovie)">
+          <li class="searchbar-hidden">
+            <!-- Search bar hidden -->
+            
+              <i class="fas fa-search" @click="showDisplay" ></i>
+          
+           <form :style="{ visibility: computedVisibility}"  >
+               <input
+              type="text"
+              placeholder="Search"
+              v-model="searchMovie"
+              @keyup.enter="$emit('search', searchMovie)"
+            />
             <!-- searchMovie è $event -->
             <button @click="$emit('search', searchMovie)">Cerca</button>
+           </form>
+            
           </li>
           <li>BAMBINI</li>
           <li>
@@ -39,10 +50,28 @@ export default {
   props: {
     menuList: Array,
   },
-  data(){
-      return{
-          searchMovie:'',
-      }
+  data() {
+    return {
+      searchMovie: "",
+     visibility: 'hidden',
+    };
+  },
+   computed: {
+        computedVisibility: function() {
+            return this.visibility;
+        }
+    },
+  methods:{
+  
+    showDisplay(){
+      console.log('display')
+      // this.visible = !this.visible
+       if(this.visibility ==='visible'){
+                this.visibility = 'hidden';
+          }else if(this.visibility==='hidden'){
+                this.visibility = 'visible'
+          }
+    }
   }
 };
 </script>
@@ -54,6 +83,7 @@ header {
   nav {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     .logo-menu-container {
       display: flex;
       align-items: center;
@@ -62,17 +92,52 @@ header {
     .logo img {
       width: 200px;
     }
+    .searchbar-hidden{
+        display: flex;
+      }
     .menuList {
       display: flex;
 
+      
+
       li {
         margin-left: 15px;
+        a:hover {
+          color: white;
+          font-weight: bold; 
+        }
       }
     }
     .searchBar {
       display: flex;
-      align-items: center;
+
+      i {
+        font-size: 22px;
+      }
     }
+   
+    input[type="text"] {
+      width: 170px;
+      transition: width 0.35s ease-in-out;
+    }
+
+    input[type="text"]:focus {
+      width: 250px;
+      outline: none;
+    }
+    button {
+      width: 80px;
+      height: 32px;
+    }
+    .searchBar > * {
+      margin-left: 15px;
+    }
+  }
+   .show {
+    visibility: visible
+  }
+.hide {
+    visibility: hidden
   }
 }
 </style>
