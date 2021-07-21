@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <div class="container">
-      <!-- searchedMovie è una funzione per cercare -->
-      <Header
-        :menuList="menuList"
-        @search="[findMovie($event), findSerie($event)]"
-         
-      />
-       <!-- @search="searchFilm" -->
+    <Loader v-if="movies.length == 0" />
+    <div>
+      <div class="container-fluid">
+        <Header
+          :menuList="menuList"
+          @search="[findMovie($event), findSerie($event)]"
+        />
+      </div>
 
       <div>
         <!-- ho usato al posto di movies,  filteredMovies  per filtrare -->
@@ -21,12 +21,14 @@
 import axios from "axios"; // npm install axios
 import Header from "@/components/Header.vue";
 import Main from "@/components/Main.vue";
+import Loader from "./components/Loader.vue";
 
 export default {
   name: "App",
   components: {
     Header,
     Main,
+    Loader,
   },
   data: function() {
     //MenuList del Header
@@ -40,9 +42,15 @@ export default {
         { id: 4, name: "Aggiunti di recente", link: "#" },
         { id: 5, name: "La mia lista", link: "#" },
       ],
-      films: [],
-      series: [],
-      movies: [],
+      films: [], //creo l'array per films per la ricerca
+      series: [], //creo l'array per series per la ricerca
+      movies: [], //creao l'array per movie popular per visualizzare allo schermo i films
+      apiMoviePopular: "movie/popular?api_key=b2ebac52b1c20d4bb5658dd8e16916f7",
+      apiFilm:
+        "https://api.themoviedb.org/3/search/movie?api_key=b2ebac52b1c20d4bb5658dd8e16916f7&query",
+      apiSeries:
+        "https://api.themoviedb.org/3/search/tv?api_key=b2ebac52b1c20d4bb5658dd8e16916f7&query",
+      startApi: "https://api.themoviedb.org/3/",
     };
   },
   created() {
@@ -50,52 +58,33 @@ export default {
   },
   methods: {
     popularMovieApi() {
-      axios
-        .get(
-          "https://api.themoviedb.org/3/movie/popular?api_key=b2ebac52b1c20d4bb5658dd8e16916f7"
-        )
-        .then((response) => {
-          // i dati di API verranno salvati in array di "movies"
-          this.movies = response.data.results;
-        });
-    },
-
-    searchFilm(searchMovie) {
-      if (searchMovie.length === 0) {
-        return this.popularMovieApi();
-      }
-
-      axios
-        .get(
-          `https://api.themoviedb.org/3/search/multi?api_key=b2ebac52b1c20d4bb5658dd8e16916f7&query=${searchMovie}`
-        )
-        .then((response) => {
-          this.movies = response.data.results;
-        });
-      console.log(searchMovie);
+      axios.get(`${this.startApi}${this.apiMoviePopular}`).then((response) => {
+        // i dati di API verranno salvati in array di "movies"
+        this.movies = response.data.results;
+      });
+      console.log("Popular Movies");
     },
 
     findSerie(searchMovie) {
-      axios
-        .get(
-          `https://api.themoviedb.org/3/search/tv?api_key=b2ebac52b1c20d4bb5658dd8e16916f7&query=${searchMovie}`
-        )
-        .then((response) => {
-          this.series = response.data.results;
-          console.log(response.data.results)
-        });
+      console.log("FindSerie");
+      axios.get(`${this.apiSeries}=${searchMovie}`).then((response) => {
+        this.series = response.data.results;
+        console.log(response.data.results);
+      });
     },
 
     findMovie(searchMovie) {
-      console.log('hey')
-      axios
-        .get(
-          `https://api.themoviedb.org/3/search/movie?api_key=b2ebac52b1c20d4bb5658dd8e16916f7&query=${searchMovie}`
-        )
-        .then((response) => {
-          this.films = response.data.results;
-          console.log(response.data.results)
-        });
+      console.log("FindMovie");
+      axios.get(`${this.apiFilm}=${searchMovie}`).then((response) => {
+        this.films = response.data.results;
+        console.log(response.data.results);
+      });
+    },
+
+    inputEmpty(searchMovie) {
+      if (searchMovie.length === 0) {
+        alert("not found result");
+      }
     },
   },
 };
