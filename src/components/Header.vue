@@ -18,20 +18,20 @@
         <ul class="searchBar">
           <li class="searchbar-hidden">
             <!-- Search bar hidden -->
-            
-              <!-- <i class="fas fa-search" @click="showDisplay" ></i> -->
-          
-           <form :style="{ visibility: computedVisibility}"  >
-               <input
-              type="text"
-              placeholder="Search"
-              v-model="searchMovie"
-              @keyup.enter="$emit('search', searchMovie)"
-            />
-            <!-- searchMovie è $event -->
-            <button @click="$emit('search', searchMovie)">Cerca</button>
-           </form>
-             <i class="fas fa-search" @click="showDisplay" ></i>
+
+            <!-- <i class="fas fa-search" @click="showDisplay" ></i> -->
+
+            <form :style="{ visibility: computedVisibility }">
+              <input
+                type="text"
+                placeholder="Search"
+                v-model="searchMovie"
+                @keyup.enter="$emit('search', searchMovie)"
+              />
+              <!-- searchMovie è $event -->
+              <button @click="$emit('search', searchMovie)">Cerca</button>
+            </form>
+            <i class="fas fa-search" @click="showDisplay"></i>
           </li>
           <li>BAMBINI</li>
           <li>
@@ -53,26 +53,25 @@ export default {
   data() {
     return {
       searchMovie: "",
-     visibility: 'hidden',
+      visibility: "hidden",
     };
   },
-   computed: {
-        computedVisibility: function() {
-            return this.visibility;
-        }
+  computed: {
+    computedVisibility: function() {
+      return this.visibility;
     },
-  methods:{
-  
-    showDisplay(){
-      console.log('display')
-      // this.visible = !this.visible
-       if(this.visibility ==='visible'){
-                this.visibility = 'hidden';
-          }else if(this.visibility==='hidden'){
-                this.visibility = 'visible'
-          }
-    }
-  }
+  },
+  methods: {
+    showDisplay() {
+      console.log("display");
+     
+      if (this.visibility === "visible") {
+        this.visibility = "hidden";
+      } else if (this.visibility === "hidden") {
+        this.visibility = "visible";
+      }
+    },
+  },
 };
 </script>
 
@@ -92,19 +91,17 @@ header {
     .logo img {
       width: 200px;
     }
-    .searchbar-hidden{
-        display: flex;
-      }
+    .searchbar-hidden {
+      display: flex;
+    }
     .menuList {
       display: flex;
-
-      
 
       li {
         margin-left: 15px;
         a:hover {
           color: white;
-          font-weight: bold; 
+          font-weight: bold;
         }
       }
     }
@@ -115,9 +112,8 @@ header {
         font-size: 22px;
       }
     }
-   
+
     input[type="text"] {
-     
       transition: width 0.35s ease-in-out;
     }
 
@@ -133,11 +129,11 @@ header {
       margin-left: 15px;
     }
   }
-   .show {
-    visibility: visible
+  .show {
+    visibility: visible;
   }
-.hide {
-    visibility: hidden
+  .hide {
+    visibility: hidden;
   }
 }
 </style>

@@ -80,9 +80,7 @@ export default {
     background: rgba(0, 0, 0, 0.8);
    transition-duration: 4s;
   }
-  &:focus .box-informations{
-    
-  }
+ 
   .hover {
     margin-top: 170px;
     color: white;

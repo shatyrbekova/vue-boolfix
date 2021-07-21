@@ -10,7 +10,7 @@
      
       
         <Movie
-          class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-2 pl-0"
+          class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 pl-0"
           v-for="element in movies"
           :key="element.id"
           :title="element.title"
@@ -32,7 +32,7 @@
        
       <div class="row">
         <Movie
-          class="ol-12 col-sm-6 col-md-6 col-lg-3 col-xl-2 "
+          class="ol-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 "
           v-for="element in films"
           :key="element.id"
           :title="element.title"
@@ -51,7 +51,7 @@
      
       <div class="row">
         <Movie
-          class="ol-12 col-sm-6 col-md-6 col-lg-3 col-xl-2"
+          class="ol-12 col-sm-6 col-md-6 col-lg-3 col-xl-3"
           v-for="element in series"
           :key="element.id"
           :title="element.name"
