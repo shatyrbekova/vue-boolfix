@@ -19,31 +19,36 @@
           <li class="searchbar-hidden">
             <!-- Search bar hidden -->
 
-            
-            
-          
-            <div :style="{ visibility: computedVisibility}">
+            <div :style="{ visibility: computedVisibility }">
               <input
-                type="text"
-                placeholder="Search"
+                type="search"
+                placeholder="Cerca..."
                 v-model="searchMovie"
                 @keyup.enter="$emit('search', searchMovie)"
               />
             </div>
-              <!-- searchMovie è $event -->
+            <!-- searchMovie è $event -->
 
-            <div :style="{ visibility: computedVisibility}">
-              <button type="button" @click="$emit('search', searchMovie)">Cerca</button>
+            <div :style="{ visibility: computedVisibility }">
+              <button type="button" @click="$emit('search', searchMovie)">
+                Cerca
+              </button>
             </div>
-          
-            <i class="fas fa-search" @click="showDisplay"></i>
             <!-- @click="showDisplay" -->
+          </li>
+          <li>
+             <i class="fas fa-search" @click="showDisplay"></i>
           </li>
           <li>BAMBINI</li>
           <li>
             <i class="fas fa-bell"></i>
           </li>
-          <li></li>
+          <li class="avatar-box">
+         
+           <img src="../assets/netflix-avatar.png" alt="">
+           <i class="fas fa-sort-down"></i>
+          </li>
+         
         </ul>
       </div>
     </nav>
@@ -70,7 +75,7 @@ export default {
   methods: {
     showDisplay() {
       console.log("display");
-     
+
       if (this.visibility === "visible") {
         this.visibility = "hidden";
       } else if (this.visibility === "hidden") {
@@ -113,26 +118,47 @@ header {
     }
     .searchBar {
       display: flex;
-
+      align-items:  center;
       i {
         font-size: 22px;
       }
+      img{
+        width:50px;
+      }
     }
 
-    input[type="text"] {
+    input[type="search"] {
       transition: width 0.35s ease-in-out;
+      background: #000; 
+      color: white;
+      height: 35px;
+      border: 1px solid grey;
+      text-indent:12px; //Spazio del placeholder dell'input
     }
 
-    input[type="text"]:focus {
+    input[type="search"]:focus {
       width: 250px;
       outline: none;
     }
+      // button cancel dell'input, caricato da bootstrap;
+    input[type="text"]::-webkit-search-cancel-button {
+        -webkit-appearance: searchfield-cancel-button;
+        background: white;    
+    }
     button {
       width: 80px;
-      height: 32px;
+      height: 35px;
+      line-height:35px;
+      background: #000;
+      color:white;
+      border: 1px solid grey;
     }
+
     .searchBar > * {
       margin-left: 15px;
+    }
+    .avatar-box img{
+       margin-right: 12px;
     }
   }
   .show {
