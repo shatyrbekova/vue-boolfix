@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="container-fluid">
+    <div class="container">
       <!-- searchedMovie è una funzione per cercare -->
       <Header
         :menuList="menuList"

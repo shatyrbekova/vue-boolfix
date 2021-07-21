@@ -55,7 +55,7 @@ export default {
   position: relative;
   cursor: pointer;
   background-size: cover;
-  height: 520px;
+  height: 470px;
   margin-bottom: 15px;
 
   &:hover .box-informations {
