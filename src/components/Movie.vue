@@ -8,7 +8,7 @@
           ')'
         
       "
-      ml-1
+    
     >
       <div class="box-informations">
         <div class="hover">
@@ -70,7 +70,8 @@ export default {
   position: relative;
   cursor: pointer;
   background-size: cover;
-  height: 470px;
+  height: 340px;
+  width:230px;
   margin-bottom: 15px;
   font-family: 'Bebas Neue', cursive;
 
@@ -82,13 +83,13 @@ export default {
   }
  
   .hover {
-    margin-top: 170px;
+    margin-top: 100px;
     color: white;
 
   }
   
   .box-informations {
-    font-size: 20px;
+    font-size: 18px;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -99,7 +100,7 @@ export default {
     display: none;
 
     .title {
-      font-size: 27px;
+      font-size: 24px;
       font-weight: bold;
       line-height: 100%;
     }

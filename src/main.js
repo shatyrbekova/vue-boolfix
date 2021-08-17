@@ -14,6 +14,9 @@ Vue.component('lang-flag', LangFlag);
 
 import '@fortawesome/fontawesome-free/css/all.css'
 
+import VueRouter from 'vue-router'
+
+Vue.use(VueRouter)
 Vue.config.productionTip = false
 
 new Vue({

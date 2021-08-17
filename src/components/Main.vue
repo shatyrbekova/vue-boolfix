@@ -8,9 +8,9 @@
 
     <div v-if="films.length === 0 && series.length === 0" class="row">
      
-      
+     
         <Movie
-          class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-2"
+          class="col-12 col-sm-6 col-md-4 col-lg-2 "
           v-for="element in movies"
           :key="element.id"
           :title="element.title"
@@ -20,19 +20,19 @@
           :poster="element.poster_path"
           :originCountry="element.origin_country"
         />
- 
+      
     </div>
 
     <div v-else>
       <div class="row">
         <div class="col-12">
-           <h2>MOVIES</h2>
-       </div>
+          <h2>MOVIES</h2>
+        </div>
       </div>
-       
+
       <div class="row">
         <Movie
-          class="ol-12 col-sm-6 col-md-6 col-lg-3 col-xl-2 "
+          class="ol-12 col-sm-6 col-md-4 col-lg-2  "
           v-for="element in films"
           :key="element.id"
           :title="element.title"
@@ -45,13 +45,13 @@
 
       <div class="row">
         <div class="col-12">
-            <h2>SERIES</h2>
-       </div>
+          <h2>SERIES</h2>
+        </div>
       </div>
-     
+
       <div class="row">
         <Movie
-          class="ol-12 col-sm-6 col-md-6 col-lg-3 col-xl-2"
+          class="ol-12 col-sm-6 col-md-4 col-lg-2"
           v-for="element in series"
           :key="element.id"
           :title="element.name"
@@ -84,8 +84,8 @@ export default {
 
 <style lang="scss" scoped>
 main {
-  h2{
-    font-weight:  bold;
+  h2 {
+    font-weight: bold;
     margin-top: 24px;
   }
   color: white;
